@@ -1,0 +1,11 @@
+.site-item {
+  gap: 0.3rem;
+  display: flex;
+  flex-direction: column;
+
+  &-aggregated {
+    align-items: center;
+    display: flex;
+    gap: 0.5rem;
+  }
+}

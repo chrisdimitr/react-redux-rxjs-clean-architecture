@@ -1,0 +1,10 @@
+# Ignore version control systems directories
+**/.git
+**/.svn
+**/.hg
+**/node_modules
+
+# Ignore artifacts
+build
+coverage
+dist

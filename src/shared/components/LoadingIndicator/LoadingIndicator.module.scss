@@ -1,0 +1,14 @@
+.loading {
+  &-container {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &-paper {
+    padding: 5rem;
+    display: flex;
+    gap: 1rem;
+  }
+}
