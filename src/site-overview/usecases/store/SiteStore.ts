@@ -1,8 +1,7 @@
 import { createSelector, createSlice } from "@reduxjs/toolkit";
 
-import { RootState } from "@config/redux-toolkit/store.ts";
-
-import { SiteState } from "./SiteStoreModels.ts";
+import { SiteState } from "./SiteStoreModel.ts";
+import { RootState } from "../../../infrastructure/redux-toolkit/store.ts";
 
 export const SITE_REDUCER_NAME = "site";
 

@@ -1,7 +1,7 @@
 import { ofType } from "redux-observable";
 import { catchError, map, of, switchMap } from "rxjs";
 
-import { getPropertiesInteractor } from "@shared/services/properties/config/PropertiesIntances.ts";
+import { propertiesInteractor } from "@shared/services/properties/infrastructure/PropertiesIntances.ts";
 import {
   getProperties,
   getPropertiesFailure,
@@ -11,7 +11,7 @@ import {
 export const getPropertiesEffect = (actions$: any) =>
   actions$.pipe(
     ofType(getProperties),
-    switchMap(() => getPropertiesInteractor.getCalculationPeriods().pipe(map(getPropertiesSuccess))),
+    switchMap(() => propertiesInteractor.getCalculationPeriods().pipe(map(getPropertiesSuccess))),
     catchError((error) => of(getPropertiesFailure(error)))
   );
 

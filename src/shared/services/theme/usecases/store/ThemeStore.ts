@@ -1,9 +1,9 @@
 import { createSelector, createSlice } from "@reduxjs/toolkit";
 
-import { RootState } from "@config/redux-toolkit/store.ts";
+import { THEME_LOCALSTORAGE_KEY } from "@shared/services/theme/infrastructure/ThemeConfig.ts";
 
-import { ETheme, ThemeState } from "./ThemeStoreModels.ts";
-import { THEME_LOCALSTORAGE_KEY } from "../../config/ThemeConfig.ts";
+import { ETheme, ThemeState } from "./ThemeStoreModel.ts";
+import { RootState } from "../../../../../infrastructure/redux-toolkit/store.ts";
 
 export const THEME_REDUCER_NAME = "theme";
 

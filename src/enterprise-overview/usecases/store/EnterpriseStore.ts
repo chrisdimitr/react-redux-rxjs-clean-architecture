@@ -1,8 +1,9 @@
 import { createSelector, createSlice } from "@reduxjs/toolkit";
 
-import { RootState } from "@config/redux-toolkit/store";
-
-import { EnterpriseState } from "./EnterpriseModels";
+import { EnterpriseState } from "./EnterpriseModel.ts";
+import { RootState } from "../../../infrastructure/redux-toolkit/store.ts";
+import { enterpriseViewPresenter } from "../../infrastructure/EnterpriseInstances.ts";
+import { domainsToModels } from "../mappers/EnterpriseModelMapper.ts";
 
 export const ENTERPRISE_REDUCER_NAME = "enterprise";
 
@@ -37,7 +38,6 @@ export const enterpriseReducer = enterpriseSlice.reducer;
 
 export const selectEnterprisesState = (state: RootState) => state[ENTERPRISE_REDUCER_NAME];
 
-export const selectEnterprises = createSelector(
-  selectEnterprisesState,
-  (enterpriseState) => enterpriseState.enterprises
+export const selectEnterprises = createSelector(selectEnterprisesState, (enterpriseState) =>
+  enterpriseViewPresenter.successView(domainsToModels(enterpriseState.enterprises))
 );

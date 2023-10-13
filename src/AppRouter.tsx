@@ -2,16 +2,16 @@ import { lazy, useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { createBrowserRouter, Navigate, useParams } from "react-router-dom";
 
-import LoadingIndicator from "@shared/components/LoadingIndicator/LoadingIndicator.tsx";
+import LoadingIndicator from "@shared/components/loading-indicator/LoadingIndicator.tsx";
 import { appInitializer } from "@shared/services/app-initializer/AppInitializer.ts";
 import { unsubscribe } from "@shared/utils/ObservableUtils.ts";
 
-import { selectAppSecureInitialized } from "@config/redux-toolkit/store.ts";
-
-import { getAuthInteractor } from "./auth/config/AuthInstances.ts";
-import { EnterprisesOverviewResolver } from "./enterprise-overview/gateways/view/components/EnterprisesOverviewResolver.ts";
-import AppLayout from "./layout/gateways/view/components/AppLayout.tsx";
-import { SiteOverviewResolver } from "./site-overview/gateways/view/components/SiteOverviewResolver.ts";
+import { RouteResolverFn } from "./AppModel.tsx";
+import { authInteractor } from "./auth/infrastructure/AuthInstances.ts";
+import { EnterprisesOverviewResolver } from "./enterprise-overview/adapters/in/components/EnterprisesOverviewResolver.ts";
+import { selectAppSecureInitialized } from "./infrastructure/redux-toolkit/store.ts";
+import AppLayout from "./layout/adapters/in/components/AppLayout.tsx";
+import { SiteOverviewResolver } from "./site-overview/adapters/in/components/SiteOverviewResolver.ts";
 
 import type { RouteObject } from "react-router";
 
@@ -21,15 +21,13 @@ export const loginPath = "/login";
 export const enterpriseOverviewPath = "/enterprise-overview";
 export const siteOverviewPath = "/site-overview/:siteId";
 
-export type RouteResolverFn = (params: any) => Promise<any | undefined>;
-
 const AppAnonymousRoute = (props: { component: any }) => {
   const { component } = props;
 
   const [isAuthenticated, setIsAuthenticated] = useState<boolean | undefined>(undefined);
 
   useEffect(() => {
-    const sub = getAuthInteractor.isAuthenticated().subscribe((authenticated) => {
+    const sub = authInteractor.isAuthenticated().subscribe((authenticated) => {
       setIsAuthenticated(authenticated);
     });
 
@@ -55,7 +53,7 @@ const AppSecuredRoute = (props: { component: any }) => {
   const [isAuthenticated, setIsAuthenticated] = useState<boolean | undefined>(undefined);
 
   useEffect(() => {
-    const sub = getAuthInteractor.isAuthenticated().subscribe((authenticated) => {
+    const sub = authInteractor.isAuthenticated().subscribe((authenticated) => {
       setIsAuthenticated(authenticated);
 
       if (authenticated) {
@@ -121,13 +119,11 @@ const RouteResolver = (props: { Component: any; resolver: RouteResolverFn }) => 
   return <ResolvedComponent />;
 };
 
-const EnterprisesOverview = lazy(
-  () => import("./enterprise-overview/gateways/view/components/EnterprisesOverview.tsx")
-);
-const SiteOverview = lazy(() => import("./site-overview/gateways/view/components/SiteOverview.tsx"));
-const Login = lazy(() => import("./login/gateways/view/components/Login.tsx"));
-const AuthCallback = lazy(() => import("./auth/gateways/view/components/AuthCallback.tsx"));
-const NotFoundError404 = lazy(() => import("./errors/gateways/view/components/NotFoundError404/NotFoundError404.tsx"));
+const EnterprisesOverview = lazy(() => import("./enterprise-overview/adapters/in/components/EnterprisesOverview.tsx"));
+const SiteOverview = lazy(() => import("./site-overview/adapters/in/components/SiteOverview.tsx"));
+const Login = lazy(() => import("./login/adapters/in/components/Login.tsx"));
+const AuthCallback = lazy(() => import("./auth/adapters/in/components/AuthCallback.tsx"));
+const NotFoundError404 = lazy(() => import("./errors/adapters/in/components/NotFoundError404/NotFoundError404.tsx"));
 
 const AppRoutes: RouteObject[] = [
   {

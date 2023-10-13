@@ -1,17 +1,18 @@
 import { ofType } from "redux-observable";
 import { catchError, map, of, switchMap } from "rxjs";
 
+import { calculationPeriodsInteractor } from "@shared/services/calculation-periods/infrastructure/CalculationPeriodsntances";
+
 import {
   getCalculationPeriods,
   getCalculationPeriodsFailure,
   getCalculationPeriodsSuccess
 } from "./CalculationPeriodsStore";
-import { getCalculationPeriodsInteractor } from "../../config/CalculationPeriodsntances";
 
 export const getCalculationPeriodsEffect = (actions$: any) =>
   actions$.pipe(
     ofType(getCalculationPeriods),
-    switchMap(() => getCalculationPeriodsInteractor.getCalculationPeriods().pipe(map(getCalculationPeriodsSuccess))),
+    switchMap(() => calculationPeriodsInteractor.getCalculationPeriods().pipe(map(getCalculationPeriodsSuccess))),
     catchError((error) => of(getCalculationPeriodsFailure(error)))
   );
 

@@ -1,9 +1,8 @@
 import { createSelector, createSlice } from "@reduxjs/toolkit";
 
-import { RootState } from "@config/redux-toolkit/store.ts";
-import { DEFAULT_LANGUAGE, ESupportedLanguages } from "@config/translation/TranslationConfig.ts";
-
-import { TranslationsState } from "./TranslationsModels.ts";
+import { TranslationsState } from "./TranslationsModel.ts";
+import { RootState } from "../../../infrastructure/redux-toolkit/store.ts";
+import { DEFAULT_LANGUAGE, ESupportedLanguages } from "../../../infrastructure/translation/TranslationConfig.ts";
 
 export const TRANSLATIONS_REDUCER_NAME = "translations";
 

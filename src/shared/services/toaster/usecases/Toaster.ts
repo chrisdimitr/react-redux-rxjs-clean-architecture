@@ -2,7 +2,7 @@ import { toast } from "react-toastify";
 
 import { ITypedToasterUseCase } from "@shared/services/toaster/usecases/ports/in/ITypedToasterUseCase.ts";
 
-import ReactToastifyConfig from "@config/react-toastify/ReactToastifyConfig.ts";
+import ReactToastifyConfig from "../../../../infrastructure/react-toastify/ReactToastifyConfig.ts";
 
 class Toaster implements ITypedToasterUseCase {
   constructor() {}

@@ -1,3 +1,3 @@
-import { httpClientAxios } from "@config/axios/AxiosConfig.ts";
+import { httpClientAxios } from "../../../infrastructure/axios/AxiosConfig.ts";
 
 export const jsonHttpClient = httpClientAxios;

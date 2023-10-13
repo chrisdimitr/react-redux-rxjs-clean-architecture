@@ -1,4 +1,4 @@
-import { ServiceProfile } from "@shared/models/CommonModels.ts";
+import { ServiceProfile } from "@shared/models/CommonModel.ts";
 
 import { Site } from "../../site-overview/domains/Site.ts";
 

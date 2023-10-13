@@ -1,8 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-import { RootState } from "@config/redux-toolkit/store.ts";
-
-import { CalculationPeriodsState } from "./CalculationPeriodsStoreModels";
+import { CalculationPeriodsState } from "./CalculationPeriodsStoreModel.ts";
+import { RootState } from "../../../../../infrastructure/redux-toolkit/store.ts";
 
 export const CALCULATION_PERIODS_REDUCER_NAME = "calculationperiods";
 

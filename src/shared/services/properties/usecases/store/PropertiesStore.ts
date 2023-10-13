@@ -1,8 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-import { PropertiesState } from "@shared/services/properties/usecases/store/PropertiesStoreModels.ts";
+import { PropertiesState } from "@shared/services/properties/usecases/store/PropertiesStoreModel.ts";
 
-import { RootState } from "@config/redux-toolkit/store.ts";
+import { RootState } from "../../../../../infrastructure/redux-toolkit/store.ts";
 
 export const PROPERTIES_REDUCER_NAME = "properties";
 

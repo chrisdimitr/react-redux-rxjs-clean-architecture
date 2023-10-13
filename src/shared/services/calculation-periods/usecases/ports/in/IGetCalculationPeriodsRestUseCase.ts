@@ -1,7 +1,7 @@
 import { Observable } from "rxjs";
 
-import { CalculationPeriod } from "@shared/models/CommonModels.ts";
+import { CalculationPeriodModel } from "@shared/services/calculation-periods/usecases/models/CalculationPeriodModel.ts";
 
 export interface IGetCalculationPeriodsRestUseCase {
-  getCalculationPeriods(): Observable<CalculationPeriod[]>;
+  getCalculationPeriods(): Observable<CalculationPeriodModel[]>;
 }

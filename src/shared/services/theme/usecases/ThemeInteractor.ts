@@ -1,15 +1,13 @@
 import { createTheme, PaletteOptions, Theme } from "@mui/material";
 
-import { darkColorPallete, lightColorPallete } from "@config/mui/ColorPalleteConfig.ts";
-
-import { store } from "@config/redux-toolkit/store.ts";
-
 import { IGetThemeUseCase } from "./ports/in/IGetThemeUseCase.ts";
-import { ISetThemeStoreUseCase } from "./ports/in/ISetThemeStoreUseCase.ts";
+import { IThemeStoreUseCase } from "./ports/in/IThemeStoreUseCase.ts";
 import { setTheme } from "./store/ThemeStore.ts";
-import { ETheme } from "./store/ThemeStoreModels.ts";
+import { ETheme } from "./store/ThemeStoreModel.ts";
+import { darkColorPallete, lightColorPallete } from "../../../../infrastructure/mui/ColorPalleteConfig.ts";
+import { store } from "../../../../infrastructure/redux-toolkit/store.ts";
 
-export class ThemeInteractor implements ISetThemeStoreUseCase, IGetThemeUseCase {
+export class ThemeInteractor implements IThemeStoreUseCase, IGetThemeUseCase {
   constructor() {}
 
   dispatchSetTheme(theme?: ETheme): void {

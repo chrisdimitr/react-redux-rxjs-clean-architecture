@@ -1,7 +1,7 @@
 import { Observable } from "rxjs";
 
-import { Property } from "@shared/models/CommonModels.ts";
+import { PropertyModel } from "@shared/services/properties/usecases/models/PropertyModel.ts";
 
 export interface IGetPropertiesRestUseCase {
-  getCalculationPeriods(): Observable<Property[]>;
+  getCalculationPeriods(): Observable<PropertyModel[]>;
 }

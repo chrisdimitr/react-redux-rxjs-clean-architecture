@@ -1,4 +1,4 @@
-import { CalculationPeriod, Property, ServiceProfile } from "@shared/models/CommonModels.ts";
+import { CalculationPeriod, Property, ServiceProfile } from "@shared/models/CommonModel.ts";
 
 import { Enterprise } from "../../enterprise-overview/domains/Enterprise.ts";
 

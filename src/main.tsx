@@ -1,10 +1,10 @@
 import { createRoot } from "react-dom/client";
 import { Provider } from "react-redux";
 
-import { ConsoleLoggingConfig } from "@config/console-logging/ConsoleLoggingConfig.ts";
-import { DayJsConfig } from "@config/dayjs/DayJsConfig.ts";
-import { MuiConfig } from "@config/mui/MuiConfig.ts";
-import { store } from "@config/redux-toolkit/store";
+import { ConsoleLoggingConfig } from "./infrastructure/console-logging/ConsoleLoggingConfig.ts";
+import { DayJsConfig } from "./infrastructure/dayjs/DayJsConfig.ts";
+import { MuiConfig } from "./infrastructure/mui/MuiConfig.ts";
+import { store } from "./infrastructure/redux-toolkit/store";
 
 import "dayjs/locale/de";
 
