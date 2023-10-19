@@ -2,6 +2,8 @@ import { createSelector, createSlice } from "@reduxjs/toolkit";
 
 import { SiteState } from "./SiteStoreModel.ts";
 import { RootState } from "../../../infrastructure/redux-toolkit/store.ts";
+import { siteViewPresenter } from "../../infrastructure/SiteInstances.ts";
+import { domainToModel } from "../mappers/SiteModelMapper.ts";
 
 export const SITE_REDUCER_NAME = "site";
 
@@ -36,4 +38,6 @@ export const siteReducer = siteSlice.reducer;
 
 export const selectSiteState = (state: RootState) => state[SITE_REDUCER_NAME];
 
-export const selectSite = createSelector(selectSiteState, (siteState) => siteState.site);
+export const selectSite = createSelector(selectSiteState, (siteState) =>
+  siteViewPresenter.successView(domainToModel(siteState.site))
+);
